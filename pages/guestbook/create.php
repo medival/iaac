@@ -2,6 +2,7 @@
 
 <?php include "./../template/header.php"; ?>
 <div class="container">
+    <h2> Input Guest Book </h2>
     <?php
     
     //Fungsi untuk mencegah inputan karakter yang tidak sesuai
@@ -14,13 +15,11 @@
     //Cek apakah ada kiriman form dari method post
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $nama_pengarang=input($_POST["nama_pengarang"]);
-        $judul_jurnal=input($_POST["judul_jurnal"]);
-        $penerbit=input($_POST["penerbit"]);
-        $tahun_terbit=input($_POST["tahun_terbit"]);
-        $volume=input($_POST["no_hp"]);
+        $nama=input($_POST["nama"]);
+        $alamat=input($_POST["alamat"]);
+        $pesan=input($_POST["penerbit"]);
 
-        //Query input menginput data kedalam tabel anggota
+        //Query input menginput data kedalam tabel guestbook
         $sql="insert into tb_jurnal (nama_pengarang,judul_jurnal,penerbit,tahun_terbit,volume) values
 		('$nama_pengarang','$judul_jurnal','$penerbit','$tahun_terbit','$volume')";
 
@@ -39,31 +38,23 @@
 
     }
     ?>
-    <h4>Tambah Jurnal</h4>
+    <h2></h2>
+
 
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <div class="form-group">
-            <label>Nama Pengarang:</label>
-            <input type="text" name="nama_pengarang" class="form-control" placeholder="Nama Pengarang" required />
+            <label>Nama :</label>
+            <input type="text" name="nama" class="form-control" placeholder="Nama Pengunjung" required />
 
         </div>
         <div class="form-group">
-            <label>Judul Jurnal:</label>
-            <input type="text" name="judul_jurnal" class="form-control" placeholder="Judul Jurnal" required/>
+            <label>Alamat:</label>
+            <input type="text" name="alamat" class="form-control" placeholder="Kota Pengunjung" required/>
 
         </div>
         <div class="form-group">
-            <label>Penerbit:</label>
-            <textarea name="penerbit" class="form-control" rows="5" placeholder="Penerbit" required></textarea>
-
-        </div>
-        <div class="form-group">
-            <label>Tahun Terbit:</label>
-            <input type="text" name="tahun_terbit" class="form-control" placeholder="Tahun Terbit" required/>
-        </div>
-        <div class="form-group">
-            <label>Volume:</label>
-            <input type="text" name="volume" class="form-control" placeholder="Volume" required/>
+            <label>Pesan:</label>
+            <textarea name="pesan" class="form-control" rows="5" placeholder="Kepentingan/Pesan" required></textarea>
         </div>
 
         <button type="submit" name="submit" class="btn btn-sm btn-primary">Submit</button>

@@ -49,11 +49,10 @@
         else {
             echo "<div class='alert alert-danger'> Data Gagal diupdate.</div>";
         }
-
     }
 
     ?>
-    <h3>Update Data</h3>
+    <h4>Update Data</h4>
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <div class="form-group">
             <label>Nama Pengarang:</label>
@@ -80,7 +79,7 @@
         </div>
         <input type="hidden" name="id_jurnal" value="<?= $data['id_jurnal']; ?>" />
 
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-sm btn-primary">Submit</button>
     </form>
 </div>
 <?php include "./../template/footer.php" ?>

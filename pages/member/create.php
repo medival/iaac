@@ -2,7 +2,7 @@
 
 <?php include "./../template/header.php"; ?>
 <div class="container">
-    <h2> Pendaftaran Akun </h2>
+    <h4> Pendaftaran Akun </h4>
     <?php
     
     //Fungsi untuk mencegah inputan karakter yang tidak sesuai
@@ -41,8 +41,6 @@
 
     }
     ?>
-    <h2>Tambah Akun</h2>
-
 
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <div class="form-group">

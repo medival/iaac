@@ -53,7 +53,7 @@
     }
 
     ?>
-    <h3>Update Data</h3>
+    <h4>Update Data</h4>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <div class="form-group">
             <label>Username:</label>
@@ -81,7 +81,7 @@
 
         <input type="hidden" name="id_anggota" value="<?php echo $data['id_anggota']; ?>" />
 
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-sm btn-primary">Submit</button>
     </form>
 </div>
 <?php include "./../template/footer.php" ?>
