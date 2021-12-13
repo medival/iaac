@@ -1,0 +1,55 @@
+version: '3.9'
+services:
+  php-apache-environment:
+    container_name: php-apache
+    build:
+        context: ./app
+        dockerfile: Dockerfile
+    depends_on:
+        - db-mysql
+    volumes:
+        - ./app:/var/www/html/
+    ports:
+      - 8000:80
+    networks:
+      - frontend
+      - backend
+    environment:
+      MYSQL_HOST: db-mysql
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: homestead
+      MYSQL_DATABASE: db_xampp
+      MYSQL_ROOT_PASSWORD: rootless
+
+  db-mysql:
+    container_name: db-mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootless
+      MYSQL_DATABASE: db_xampp
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: homestead
+    ports:
+      - "3306:3306"
+    networks:
+      backend:
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8080:80'
+    restart: always
+    environment:
+      PMA_HOST: db-mysql
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: homestead
+    depends_on:
+      - db-mysql
+    networks:
+      backend:
+
+networks:
+  frontend:
+  backend:
