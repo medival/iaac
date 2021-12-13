@@ -43,6 +43,7 @@
             $sql="select * from tb_jurnal";
 
             $hasil=mysqli_query($kon,$sql);
+
             $no=0;
             while ($data = mysqli_fetch_array($hasil)) {
                 $no++;
