@@ -5,7 +5,8 @@
 
 
     //Fungsi untuk mencegah inputan karakter yang tidak sesuai
-    function input($data) {
+    function input($data)
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -16,13 +17,12 @@
         $id_guestbook=input($_GET["id_guestbook"]);
 
         $sql="select * from tb_guestbook where id_guestbook=$id_guestbook";
-        $hasil=mysqli_query($kon,$sql);
+        $hasil=mysqli_query($kon, $sql);
         $data = mysqli_fetch_assoc($hasil);
     }
 
     //Cek apakah ada kiriman form dari method post
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
         $id_guestbook=htmlspecialchars($_POST["id_guestbook"]);
         $nama=input($_POST["nama"]);
         $alamat=input($_POST["alamat"]);
@@ -34,18 +34,16 @@
 
         var_dump($sql);
         //Mengeksekusi atau menjalankan query diatas
-        $hasil=mysqli_query($kon,$sql);
+        $hasil=mysqli_query($kon, $sql);
 
         var_dump($hasil);
 
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
         if ($hasil) {
             header("Location:index.php");
-        }
-        else {
+        } else {
             echo "<div class='alert alert-danger'> Data Gagal diupdate.</div>";
         }
-
     }
 
     ?>

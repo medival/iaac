@@ -1,7 +1,7 @@
 <?php include "../template/header.php"; ?>
 		
 <?php
-    
+
     include "../../config/koneksi.php";
 
     // Cek apakah ada nilai dari method GET dengan nama id_akun
@@ -9,16 +9,15 @@
         $id_jurnal=htmlspecialchars($_GET["id_jurnal"]);
 
         $sql="delete from tb_jurnal where id_jurnal='$id_jurnal' ";
-        $hasil=mysqli_query($kon,$sql);
+        $hasil=mysqli_query($kon, $sql);
 
         //Kondisi apakah berhasil atau tidak
-            if ($hasil) {
-                header("Location:index.php");
-            }
-            else {
-                echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
-            }
+        if ($hasil) {
+            header("Location:index.php");
+        } else {
+            echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
         }
+    }
 ?>
     
 	<div class="container">
@@ -42,23 +41,22 @@
             include "../../config/koneksi.php";
             $sql="select * from tb_jurnal";
 
-            $hasil=mysqli_query($kon,$sql);
+            $hasil=mysqli_query($kon, $sql);
 
             $no=0;
             while ($data = mysqli_fetch_array($hasil)) {
-                $no++;
-                ?>
+                $no++; ?>
                 <tbody>
                 <tr>
-                    <td><?php echo $no;?></td>
+                    <td><?php echo $no; ?></td>
                     <td><?php echo $data["nama_pengarang"]; ?></td>
-                    <td><?php echo $data["judul_jurnal"];   ?></td>
-                    <td><?php echo $data["penerbit"];   ?></td>
-                    <td><?php echo $data["tahun_terbit"];   ?></td>
-                    <td><?php echo $data["volume"];   ?></td>
+                    <td><?php echo $data["judul_jurnal"]; ?></td>
+                    <td><?php echo $data["penerbit"]; ?></td>
+                    <td><?php echo $data["tahun_terbit"]; ?></td>
+                    <td><?php echo $data["volume"]; ?></td>
                     <td>
                         <a href="update.php?id_jurnal=<?php echo htmlspecialchars($data['id_jurnal']); ?>" class="btn btn-sm btn-warning" role="button">Update</a>
-                        <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id_jurnal=<?php echo $data['id_jurnal']; ?>" class="btn btn-sm btn-danger" role="button">Delete</a>
+                        <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id_jurnal=<?php echo $data['id_jurnal']; ?>" class="btn btn-sm btn-danger" role="button">Delete</a>
                     </td>
                 </tr>
                 </tbody>
