@@ -4,9 +4,10 @@
 <div class="container">
     <h4> Pendaftaran Akun </h4>
     <?php
-    
+
     //Fungsi untuk mencegah inputan karakter yang tidak sesuai
-    function input($data) {
+    function input($data)
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -14,7 +15,6 @@
     }
     //Cek apakah ada kiriman form dari method post
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
         $username=input($_POST["username"]);
         $nama=input($_POST["nama"]);
         $alamat=input($_POST["alamat"]);
@@ -27,18 +27,15 @@
 
         var_dump($sql);
         //Mengeksekusi/menjalankan query diatas
-        $hasil=mysqli_query($kon,$sql);
+        $hasil=mysqli_query($kon, $sql);
 
         var_dump($hasil);
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
         if ($hasil) {
             header("Location:index.php");
-        }
-        else {
+        } else {
             echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
-
         }
-
     }
     ?>
 

@@ -3,9 +3,10 @@
 <?php include "./../template/header.php"; ?>
 <div class="container">
     <?php
-    
+
     //Fungsi untuk mencegah inputan karakter yang tidak sesuai
-    function input($data) {
+    function input($data)
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -13,7 +14,6 @@
     }
     //Cek apakah ada kiriman form dari method post
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
         $nama_pengarang=input($_POST["nama_pengarang"]);
         $judul_jurnal=input($_POST["judul_jurnal"]);
         $penerbit=input($_POST["penerbit"]);
@@ -26,17 +26,15 @@
 
         var_dump($sql);
         //Mengeksekusi/menjalankan query diatas
-        $hasil=mysqli_query($kon,$sql);
+        $hasil=mysqli_query($kon, $sql);
 
         var_dump($hasil);
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
         if ($hasil) {
             header("Location:index.php");
-        }
-        else {
+        } else {
             echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
         }
-
     }
     ?>
     <h4>Tambah Jurnal</h4>
