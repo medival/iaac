@@ -15,3 +15,6 @@ Part of my learning. Basic CRUD (Create, Read, Update, and Delete) using PHP Nat
 
 ### Dockerimage
 `docker pull adipurnomo/iaac_php:v1`
+
+### License
+MIT
